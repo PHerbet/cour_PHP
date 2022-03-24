@@ -121,9 +121,13 @@ function categorie($age)
     {
         return "Minime";
     }
-    else 
+    else if ( $age <= 12 )
     {
-        return "Cadet";
+        return "Cadet"; 
+    }
+        else
+    {
+        return "trop jeune pour faire du sport!";
     }
 }
 
@@ -131,6 +135,7 @@ echo 'Tu fais partie de la catégorie ' .categorie(8). '<br>';
 echo 'Tu fais partie de la catégorie ' .categorie(6). '<br>';
 echo 'Tu fais partie de la catégorie ' .categorie(10). '<br>';
 echo 'Tu fais partie de la catégorie ' .categorie(17). '<br>';
+echo 'Tu fais partie de la catégorie ' .categorie(2). '<br>';
 
 //ou 
 
