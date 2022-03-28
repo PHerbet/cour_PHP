@@ -21,28 +21,35 @@
 // effectuer l'opération dans chaque cas du switch case.
 // Bonus : vérifier les erreurs (mauvais opérateur).
 // Bonus : utiliser la méthode round($valeur, 2) pour afficher le résultat avec 2 chiffres après la virgule.
-if( isset($_POST[nbr1]) && isset($_POST['nbr2']) && isset($_POST['operateur']) && $_POST['nbr1'] !='' && $_POST['nbr2']!='' && $_POST['operateur'] !='')
+if( isset($_POST['nbr1']) && isset($_POST['nbr2']) && isset($_POST['operateur']) && $_POST['nbr1'] !='' && $_POST['nbr2']!='' && $_POST['operateur'] !='' 
+&& is_numeric($_POST['nbr1']) && is_numeric($_POST['nbr2']))
 {
     $nbr1 = $_POST['nbr1'];
     $nbr2 = $_POST['nbr2'];
     $operateur = $_POST['operateur'];
+
+    switch($operateur)
+        {
+        case "*":
+            echo 'Le résultat est :'.($nbr1 * $nbr2).' <br>';
+            break;
+        case "/":
+            echo 'Le résultat est :'.($nbr1 / $nbr2).' <br>';
+            break;
+        case "+":
+            echo 'Le résultat est :'.($nbr1 + $nbr2).' <br>';
+            break;
+        case "-":
+            echo 'Le résultat est :'.($nbr1 - $nbr2).' <br>';
+            break;
+        default :
+            echo 'erreur de saisie';
+            break;
+        }
 }
-switch($operateur)
+else 
 {
-    case "*":
-        echo 'Le résultat est :'.($nbr1 * $nbr2).' <br>';
-        break;
-    case "/":
-        echo 'Le résultat est :'.($nbr1 / $nbr2).' <br>';
-        break;
-    case "+":
-        echo 'Le résultat est :'.($nbr1 + $nbr2).' <br>';
-        break;
-    case "-":
-        echo 'Le résultat est :'.($nbr1 - $nbr2).' <br>';
-        break;
-    default :
-        echo 'erreur de saisie';
+    echo 'Veuillez remplir les champs du formulaire';
 }
 ?>
 </body>
