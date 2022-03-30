@@ -2,34 +2,33 @@
 
 
 //fonction ajouter un user:
-function add_user($bdd, $name, $firstname, $mail, $pass)
-{//requete pour check le mail
-
-// $req = $req->prepare("SELECT id FROM utilisateur WHERE mail_util='$mail");
-// $req->execute([$mail]); 
-// 
-//
+function add_user($bdd, $name, $firstname, $mail, $pass, $img)
+{
     try
     {//création de la requete
-        $declarationRequete = $bdd->prepare(
+        //requete de check si mail existe déjà
+        $check_mail = $bdd->prepare(
             'SELECT count(id_util) FROM utilisateur WHERE mail_util = :mail_util'
         );
-        $declarationRequete->execute(array('mail_util' => $mail));
+        $check_mail->execute(array('mail_util' => $mail));
         
-        if ($declarationRequete->fetchColumn() > 0) {
+        if ($check_mail->fetchColumn() > 0) {
             echo "email déjà existant";
             // On a un ou plusieurs résultats, la valeur ne peut être enregistrée
         } else {
             // On n'a aucun résultat, on va pouvoir faire INSERT
-        
-        $req = $bdd->prepare('INSERT INTO utilisateur(nom_util, prenom_util, mail_util, mdp_util)
-        VALUES(:nom_util, :prenom_util, :mail_util, :mdp_util)');
+        //requete pour insert
+        $req = $bdd->prepare('INSERT INTO utilisateur(nom_util, prenom_util, mail_util, mdp_util, img_util)
+        VALUES(:nom_util, :prenom_util, :mail_util, :mdp_util, :img_util)');
         // execution de la requete
         $req->execute (array(
             'nom_util' => $name,
             'prenom_util' => $firstname,
             'mail_util' => $mail,
-            'mdp_util' => $pass
+            'mdp_util' => $pass,
+            'img_util' => $img,
+
+
         ));
     }
 }
@@ -39,6 +38,7 @@ function add_user($bdd, $name, $firstname, $mail, $pass)
         die ('Erreur : '.$e->getMessage());
     }
 }
+
 // fonction lecture de la bdd
 function show_all_user($bdd){
     try{//preraparation de la requete
@@ -50,8 +50,9 @@ function show_all_user($bdd){
             $firstname_user = $data['prenom_util'];
             $mail_user = $data['mail_util'];
             $pass_user = $data['mdp_util'];
+            $img = $data['img_util'];
             echo '<p><input type="checkbox" name="id_util[]" value="'.$id.'">
-            <a href="update_user.php?id='.$id.'">'.$name_user.'</a> '.$firstname_user.' '.$mail_user.' '.$pass_user.'</p>';
+            <a href="update_user.php?id='.$id.'">'.$name_user.'</a> '.$firstname_user.' '.$mail_user.' '.$pass_user.'<img src="'.$img.'"></p>';
         }
     }
     catch(Exception $e)

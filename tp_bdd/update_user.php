@@ -48,9 +48,8 @@
         $pass = $_POST['pass'];
         //methode de hash du pass (pas tres safe, ne pas trop utiliser)
         $pass = md5($_POST['pass']);
-        echo "Utilisateur modifié";
         update_user($bdd, $name, $firstname, $mail, $pass, $value);
-        
+        echo "Utilisateur modifié";
         }
         //test si les champs du formulaire ne sont pas remplis
         else{
