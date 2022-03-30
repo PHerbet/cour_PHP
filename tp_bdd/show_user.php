@@ -39,9 +39,9 @@
             //Script JS pour redirection vers show_user.php dans 1500 ms 
             echo '<script>
             setTimeout(()=>{
-                document.location.href="show_user.php"; 
+                document.location.href="tp_bdd/show_user.php"; 
             }, 1500);</script>';
-            header('Location : show_user.php');
+            header('Location : tp_bdd/show_user.php');
         }
         else{
             echo "<p>Veuillez cocher le(s) utilisateur(s) à supprimer</p>";

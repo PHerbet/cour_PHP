@@ -42,6 +42,8 @@
             $firstname = $_POST['firstname'];
             $mail = $_POST['mail'];
             $pass = $_POST['pass'];
+            //methode de hash du pass (pas tres safe, ne pas trop utiliser)
+            $pass = md5($_POST['pass']);
             add_user($bdd, $name, $firstname, $mail, $pass);
             echo "Utilisateur enregistré";
         }

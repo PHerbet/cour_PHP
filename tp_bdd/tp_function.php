@@ -5,16 +5,23 @@
 function add_user($bdd, $name, $firstname, $mail, $pass)
 {//requete pour check le mail
 
-// $req = $req->prepare("SELECT * FROM utilisateur WHERE mail_util=?");
+// $req = $req->prepare("SELECT id FROM utilisateur WHERE mail_util='$mail");
 // $req->execute([$mail]); 
-// $name = $req->fetch();
-// if ($name) {
-//     echo "email existant";
-// } else {
-//     echo " email inexistant";
-// } 
+// 
+//
     try
     {//création de la requete
+        $declarationRequete = $bdd->prepare(
+            'SELECT count(id_util) FROM utilisateur WHERE mail_util = :mail_util'
+        );
+        $declarationRequete->execute(array('mail_util' => $mail));
+        
+        if ($declarationRequete->fetchColumn() > 0) {
+            echo "email déjà existant";
+            // On a un ou plusieurs résultats, la valeur ne peut être enregistrée
+        } else {
+            // On n'a aucun résultat, on va pouvoir faire INSERT
+        
         $req = $bdd->prepare('INSERT INTO utilisateur(nom_util, prenom_util, mail_util, mdp_util)
         VALUES(:nom_util, :prenom_util, :mail_util, :mdp_util)');
         // execution de la requete
@@ -25,6 +32,7 @@ function add_user($bdd, $name, $firstname, $mail, $pass)
             'mdp_util' => $pass
         ));
     }
+}
     catch(Exception $e)
     {
         //affichage des exception en cas d'erreur
