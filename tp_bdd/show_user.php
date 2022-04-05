@@ -27,7 +27,7 @@
     </form>
     <?php
         if(isset($_GET['error'])){
-            echo "<p>Veuillez sélectionner un produit</p>";
+            echo "<p>Veuillez sélectionner un utilisateur</p>";
         }
         //vérification de la super globale $_POST['id_prod']
         if(isset($_POST['id_util'])){
