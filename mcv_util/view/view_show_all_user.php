@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>view_show_all_user</title>
+    <link rel="stylesheet" href="asset/style/style.css">
 </head>
 <body>
     <h3>Liste des utilisateurs :</h3>
+    <input type="submit" value="Delete" name="delete">
 </body>
 </html>

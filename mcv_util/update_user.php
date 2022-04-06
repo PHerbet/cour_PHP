@@ -7,7 +7,7 @@
     //importer le model
     include './model/model_user.php';
     //importer la vue
-    include './view/view_add_user.php';
+    include './view/view_update_user.php';
     //importer le menu
     include './view/view_header.php';
     /*---------------------------------------------
@@ -15,6 +15,10 @@
     ---------------------------------------------*/
     
     // test pour vérifier si les champs du formulaire sont remplis 
+    if(isset($_GET['id']) AND $_GET['id'] !=''){
+        //stocke $_GET['id'] dans une variable $value
+        $data = $_GET['id'];
+
         if (isset($_POST['nom_util']) && isset($_POST['prenom_util']) && isset($_POST['mail_util']) && isset($_POST['mdp_util'])
         && $_POST['nom_util'] != '' && $_POST['prenom_util'] != '' && $_POST['mail_util'] != '' && $_POST['mdp_util'] != '')
             {//Stocker les super globales POST dans des variables
@@ -22,14 +26,19 @@
                 $prenom = $_POST['prenom_util'];
                 $mail = $_POST['mail_util'];
                 $mdp = $_POST['mdp_util'];
-                //appel de la fonction ajouter un user en BDD
-                add_user($bdd, $nom, $prenom, $mail, $mdp);
+                //appel de la fonction modifier un user en BDD
+                update_user($bdd, $nom, $prenom, $mail, $mdp, $data);
                 //message 
-                echo "$name a été ajouté à la BDD";
+                echo "$name a été modifié";
             }//si champs vides
             else
             {
                 echo "Veuillez compléter les champs du formulaire";
             }
-
+        }
+    
+    //test si l'id n'existe pas 
+    else{
+        header('Location: ./view_all_user.php?error');
+    }
 ?>
