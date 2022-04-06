@@ -9,6 +9,7 @@
 </head>
 <body>
     <h3>Liste des utilisateurs :</h3>
-    <input type="submit" value="Delete" name="delete">
+    <form action="" method="post">
+   
 </body>
 </html>

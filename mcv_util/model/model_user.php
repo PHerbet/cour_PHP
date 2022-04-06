@@ -85,5 +85,37 @@
             die('Erreur : '.$e->getMessage());
         } 
     }
-    
+    //fonction affiche récupére un utilisateur
+    function get_user($bdd, $id):array {
+        try{
+            $req = $bdd->prepare("SELECT nom_util, prenom_util, mail_util, mdp_util FROM utilisateur WHERE id_util = :id_util");
+            $req->execute(array(
+                'id_util' => $id,  
+            ));
+            $data = $req->fetchAll(PDO::FETCH_ASSOC);
+            return $data;
+        }
+        catch(Exception $e)
+        {
+            //affichage d'une exception en cas d’erreur
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+    //fonction suppression de l'utilisateur 
+    function delete_user($bdd, $value)
+    {
+        try 
+        {
+            $req = $bdd -> prepare ("DELETE FROM utilisateur WHERE id_util = :id_util");
+            $req->execute(array(
+                'id_util' => $value
+                ));
+        }
+        catch(Exception $e)
+        {
+        //affichage d'une exception en cas d’erreur
+        die('Erreur : '.$e->getMessage());
+        }
+    }
 ?>

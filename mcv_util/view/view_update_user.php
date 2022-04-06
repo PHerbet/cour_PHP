@@ -10,17 +10,18 @@
 <body>
     <h3>Modifier utilisateur</h3>
     <div>
-        <form action="" method="post">
+        <form action="" method="post" >
             <p>Saisir le nom :</p>
-            <input type="text" name="nom_util">
+            <input type="text" name="nom_util" id="name">
             <p>Saisir le prénom :</p>
-            <input type="text" name="prenom_util">
+            <input type="text" name="prenom_util" id="firstname">
             <p>Saisir le mail :</p>
-            <input type="mail" name="mail_util">
+            <input type="mail" name="mail_util" id="mail">
             <p>Saisir le mdp :</p>
-            <input type="password" name="mdp_util">
+            <input type="password" name="mdp_util" id="mdp">
             <p><input type="submit" value="submit" name="submit"></p>
         </form>
+        <script src="./asset/script/script.js"></script>
     </div>
 </body>
 </html>

@@ -17,8 +17,12 @@
     // test pour vérifier si les champs du formulaire sont remplis 
     if(isset($_GET['id']) AND $_GET['id'] !=''){
         //stocke $_GET['id'] dans une variable $value
-        $data = $_GET['id'];
-
+        $id = $_GET['id'];
+        $list = get_user($bdd, $id);
+        echo '<script>
+        set_value_input("'.$list[0]['nom_util'].'", "'.$list[0]['prenom_util'].'", "'.$list[0]['mail_util'].'", 
+        "'.$list[0]['mdp_util'].'");
+        </script>';
         if (isset($_POST['nom_util']) && isset($_POST['prenom_util']) && isset($_POST['mail_util']) && isset($_POST['mdp_util'])
         && $_POST['nom_util'] != '' && $_POST['prenom_util'] != '' && $_POST['mail_util'] != '' && $_POST['mdp_util'] != '')
             {//Stocker les super globales POST dans des variables
