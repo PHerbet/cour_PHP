@@ -14,4 +14,21 @@
     var_dump($maison2);
     $maison2->surface();
     echo '<br>';
+    echo '<br>';
+    echo 'exercice sur les voitures <br>';
+    require './vehicule.php';
+    $voiture = new Vehicule("Mercedes CLK", 4, 250);
+    var_dump($voiture);
+    echo "<br>";
+    $moto = new Vehicule("Honda CBR", 2, 280);
+    var_dump($moto);
+    echo "<br>";
+    echo '<br>';
+    $voiture->detect();
+    $moto->detect();
+    $voiture->boost();
+    var_dump($voiture);
+    echo '<br>';
+    $voiture->faster($moto);
+
 ?>
