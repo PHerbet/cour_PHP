@@ -15,8 +15,26 @@
     $maison2->surface();
     echo '<br>';
     echo '<br>';
-    echo 'exercice sur les voitures <br>';
-    require './vehicule.php';
+    // //exercice 
+    // echo 'exercice sur les voitures <br>';
+    // require './vehicule.php';
+    // $voiture = new Vehicule("Mercedes CLK", 4, 250);
+    // var_dump($voiture);
+    // echo "<br>";
+    // $moto = new Vehicule("Honda CBR", 2, 280);
+    // var_dump($moto);
+    // echo "<br>";
+    // echo '<br>';
+    // $voiture->detect();
+    // $moto->detect();
+    // $voiture->boost();
+    // var_dump($voiture);
+    // echo '<br>';
+    // $voiture->faster($moto);
+    // echo"<br>";
+    //exercice
+    echo 'exercice getter/setter <br>';
+    require './vehicule_private.php';
     $voiture = new Vehicule("Mercedes CLK", 4, 250);
     var_dump($voiture);
     echo "<br>";
@@ -25,10 +43,13 @@
     echo "<br>";
     echo '<br>';
     $voiture->detect();
+    echo'<br>';
     $moto->detect();
+    echo'<br>';
     $voiture->boost();
     var_dump($voiture);
     echo '<br>';
     $voiture->faster($moto);
+    echo"<br>";
 
 ?>

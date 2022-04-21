@@ -19,7 +19,7 @@
         /*---------------------------------------
                         METHODES
         ---------------------------------------*/
-        //fonciton démarrage 
+        //fonction démarrage 
         public function demarrage()
         {
             echo ''.$this->nomVehicule.' a démarré';
